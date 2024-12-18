@@ -1,0 +1,73 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.upload-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 5px;
+}
+
+.flow-info {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.log-section {
+    background: #1e1e1e;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.log-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.log-filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#logOutput {
+    height: 400px;
+    overflow-y: auto;
+    font-family: monospace;
+    padding: 10px;
+    background: #000;
+}
+
+.log-info { color: #4CAF50; }
+.log-debug { color: #2196F3; }
+.log-warn { color: #FFC107; }
+.log-error { color: #F44336; }
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #2196F3;
+    color: white;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+input[type="text"] {
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

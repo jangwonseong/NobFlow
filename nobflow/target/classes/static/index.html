@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Node Blue Flow Viewer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Flow JSON 업로드 섹션 -->
+        <div class="upload-section">
+            <input type="file" id="flowFile" accept=".json">
+            <button id="loadBtn">Flow 불러오기</button>
+        </div>
+
+        <!-- Flow 정보 표시 섹션 -->
+        <div class="flow-info">
+            <h2>Flow 정보</h2>
+            <div id="flowDescription"></div>
+            <button id="runBtn" disabled>실행</button>
+            <button id="stopBtn" disabled>중지</button>
+        </div>
+
+        <!-- 로그 출력 섹션 -->
+        <div class="log-section">
+            <div class="log-controls">
+                <h2>로그</h2>
+                <div class="log-filters">
+                    <label>
+                        <input type="checkbox" value="INFO" checked> INFO
+                    </label>
+                    <label>
+                        <input type="checkbox" value="DEBUG" checked> DEBUG
+                    </label>
+                    <label>
+                        <input type="checkbox" value="WARN" checked> WARN
+                    </label>
+                    <label>
+                        <input type="checkbox" value="ERROR" checked> ERROR
+                    </label>
+                    <input type="text" id="searchLog" placeholder="로그 검색...">
+                </div>
+            </div>
+            <div id="logOutput"></div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html> 

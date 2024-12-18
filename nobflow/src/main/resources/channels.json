@@ -1,0 +1,102 @@
+[
+    {
+        "address": 100,
+        "place": "캠퍼스"
+    },
+    {
+        "address": 200,
+        "place": "캠퍼스1"
+    },
+    {
+        "address": 300,
+        "place": "전등1"
+    },
+    {
+        "address": 400,
+        "place": "전등2"
+    },
+    {
+        "address": 500,
+        "place": "전등3"
+    },
+    {
+        "address": 600,
+        "place": "강의실b_바닥"
+    },
+    {
+        "address": 700,
+        "place": "강의실a_바닥1"
+    },
+    {
+        "address": 800,
+        "place": "강의실a_바닥2"
+    },
+    {
+        "address": 900,
+        "place": "프로젝터1"
+    },
+    {
+        "address": 1000,
+        "place": "프로젝터2"
+    },
+    {
+        "address": 1100,
+        "place": "회의실"
+    },
+    {
+        "address": 1200,
+        "place": "서버실"
+    },
+    {
+        "address": 1300,
+        "place": "간판"
+    },
+    {
+        "address": 1400,
+        "place": "페어룸"
+    },
+    {
+        "address": 1500,
+        "place": "사무실_전열1"
+    },
+    {
+        "address": 1600,
+        "place": "사무실_전열2"
+    },
+    {
+        "address": 1700,
+        "place": "사무실_복사기"
+    },
+    {
+        "address": 1800,
+        "place": "빌트인_전열"
+    },
+    {
+        "address": 1900,
+        "place": "사무실_전열3"
+    },
+    {
+        "address": 2000,
+        "place": "정수기"
+    },
+    {
+        "address": 2100,
+        "place": "하이브_전열"
+    },
+    {
+        "address": 2200,
+        "place": "바텐_전열"
+    },
+    {
+        "address": 2300,
+        "place": "S_P"
+    },
+    {
+        "address": 2400,
+        "place": "공조기"
+    },
+    {
+        "address": 2500,
+        "place": "AC"
+    }
+]
