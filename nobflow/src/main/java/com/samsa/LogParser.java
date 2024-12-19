@@ -228,7 +228,7 @@ public class LogParser {
     }
 
     public static void main(String[] args) {
-        LogParser parser = new LogParser("./log/log.log");
+        LogParser parser = new LogParser("/home/nhnacademy/Desktop/NobFlow/nobflow/logs.log");
     
         // 1. Modbus 통신 상태 분석
         log.info("=== Modbus 통신 상태 ===");
