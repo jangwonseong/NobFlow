@@ -3,10 +3,11 @@ package com.samsa.service;
 import java.io.File;
 import java.io.RandomAccessFile;
 import org.springframework.stereotype.Service;
+import com.samsa.websocket.LogWebSocketHandler;
 
 @Service
 public class SimpleLogMonitor {
-    private static final String LOG_FILE_PATH = "/home/nhnacademy/Desktop/NobFlow/nobflow/logs.log";
+    private static final String LOG_FILE_PATH = "/home/nhnacademy/Desktop/NobFlow/nobflow/logs/logs.log";
     private volatile boolean running = true;
 
     public void startMonitoring() {
@@ -26,7 +27,7 @@ public class SimpleLogMonitor {
                         reader.seek(lastPosition);
                         String line;
                         while ((line = reader.readLine()) != null) {
-                            System.out.println(line);
+                            LogWebSocketHandler.broadcastLog(line);
                         }
                         lastPosition = reader.getFilePointer();
                     }

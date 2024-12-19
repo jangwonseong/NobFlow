@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node Blue Flow Viewer</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        #logContainer {
+            height: 500px;
+            overflow-y: auto;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .log-entry {
+            margin: 2px 0;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -83,7 +97,7 @@
                     </div>
                 </div>
                 <div id="logOutput" class="log-container">
-                    <pre id="logContent"></pre>
+                    <div id="logContainer"></div>
                 </div>
             </section>
         </main>
@@ -239,5 +253,33 @@
         }
     }
     </style>
+
+    <script>
+        const logContainer = document.getElementById('logContainer');
+        const ws = new WebSocket('ws://localhost:8081/logs/stream');
+
+        ws.onmessage = function(event) {
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.textContent = event.data;
+            logContainer.appendChild(logEntry);
+            
+            // 자동 스크롤
+            logContainer.scrollTop = logContainer.scrollHeight;
+            
+            // 로그 엔트리 제한 (선택사항)
+            while (logContainer.children.length > 1000) {
+                logContainer.removeChild(logContainer.firstChild);
+            }
+        };
+
+        ws.onclose = function() {
+            console.log('WebSocket 연결이 닫혔습니다');
+        };
+
+        ws.onerror = function(error) {
+            console.error('WebSocket 오류:', error);
+        };
+    </script>
 </body>
 </html>
