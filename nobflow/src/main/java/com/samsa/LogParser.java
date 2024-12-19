@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * 로그 파일을 파싱하고 분석하는 기능을 제공하는 클래스입니다.
@@ -27,10 +30,11 @@ import lombok.extern.slf4j.Slf4j;
  * @author samsa
  * @version 2.0
  */
+@Component
 @Slf4j
 public class LogParser {
     /** 파싱할 로그 파일의 경로 */
-    private final String filePath;
+    private final String logPath;
     
     /** 로그 레벨의 우선순위를 정의하는 열거형 */
     public enum LogLevel {
@@ -50,17 +54,20 @@ public class LogParser {
         }
     }
 
+    private static final Pattern LOG_PATTERN = Pattern.compile("\\[(ERROR|WARN|INFO|DEBUG)\\]");
+
     /**
      * LogParser 객체를 생성합니다.
      *
-     * @param filePath 파싱할 로그 파일의 경로
-     * @throws IllegalArgumentException filePath가 null인 경우
+     * @param logPath 파싱할 로그 파일의 경로
+     * @throws IllegalArgumentException logPath가 null인 경우
      */
-    public LogParser(String filePath) {
-        if (filePath == null) {
-            throw new IllegalArgumentException("파일 경로는 null일 수 없습니다");
+    public LogParser(@Value("${logging.file.path}/logs.log") String logPath) {
+        if (logPath == null) {
+            throw new IllegalArgumentException("로그 파일 경로는 null일 수 없습니다");
         }
-        this.filePath = filePath;
+        this.logPath = logPath;
+        log.info("LogParser initialized with path: {}", logPath);
     }
 
     /**
@@ -70,7 +77,7 @@ public class LogParser {
      */
     public Map<String, List<String>> getLogsByLevel() {
         Map<String, List<String>> logsByLevel = new HashMap<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String logLevel = extractLogLevel(line);
@@ -93,7 +100,7 @@ public class LogParser {
      */
     public List<String> getLogsBySpecificLevel(LogLevel targetLevel) {
         List<String> filteredLogs = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String logLevel = extractLogLevel(line);
@@ -116,16 +123,28 @@ public class LogParser {
      */
     public List<String> getLogsByTimeRange(LocalDateTime start, LocalDateTime end) {
         List<String> filteredLogs = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        
+        try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                LocalDateTime logTime = extractTimestamp(line);
-                if (logTime != null && !logTime.isBefore(start) && !logTime.isAfter(end)) {
-                    filteredLogs.add(line);
+                try {
+                    String dateStr = line.substring(0, 19);
+                    LocalDateTime logTime = LocalDateTime.parse(dateStr, formatter);
+                    if (logTime.isAfter(start) && logTime.isBefore(end)) {
+                        filteredLogs.add(line);
+                    }
+                } catch (Exception e) {
+                    // 날짜 파싱 실패한 라인은 건너뛰기
+                    continue;
                 }
             }
+            log.debug("Found {} logs between {} and {}", 
+                     filteredLogs.size(), 
+                     start.format(formatter), 
+                     end.format(formatter));
         } catch (IOException e) {
-            log.error("로그 파일 읽기 오류: {}", e.getMessage());
+            log.error("시간 범위 로그 필터링 중 오류 발생: {}", e.getMessage());
         }
         return filteredLogs;
     }
@@ -138,7 +157,7 @@ public class LogParser {
      */
     public List<String> searchLogsByKeyword(String keyword) {
         List<String> matchedLogs = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.contains(keyword)) {
@@ -168,6 +187,46 @@ public class LogParser {
             return null;
         }
     }
+
+    public List<String> filterLogsByLevel(String level) {
+        List<String> filteredLogs = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains(" " + level + " ")) {
+                    filteredLogs.add(line);
+                }
+            }
+            log.debug("Found {} logs with level {}", filteredLogs.size(), level);
+        } catch (IOException e) {
+            log.error("로그 필터링 중 오류 발생: {}", e.getMessage());
+        }
+        return filteredLogs;
+    }
+
+    public Map<String, Integer> getLogSummary() {
+        Map<String, Integer> summary = new HashMap<>();
+        summary.put("ERROR", 0);
+        summary.put("WARN", 0);
+        summary.put("INFO", 0);
+        summary.put("DEBUG", 0);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                for (String level : summary.keySet()) {
+                    if (line.contains(" " + level + " ")) {
+                        summary.put(level, summary.get(level) + 1);
+                        break;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            log.error("로그 요약 생성 중 오류 발생: {}", e.getMessage());
+        }
+        return summary;
+    }
+
     public static void main(String[] args) {
         LogParser parser = new LogParser("./log/log.log");
     

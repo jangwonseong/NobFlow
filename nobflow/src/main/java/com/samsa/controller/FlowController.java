@@ -29,7 +29,7 @@ public class FlowController {
         synchronized (flowLock) {
             if (isRunning) {
                 log.warn("Flow 실행 요청이 거부됨: 이미 실행 중");
-                return ResponseEntity.badRequest().body("Flow가 이미 실행 중입니다");
+                return ResponseEntity.badRequest().body("Flow가 이미 ��행 중입니다");
             }
 
             try {

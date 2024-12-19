@@ -5,14 +5,23 @@ import java.nio.charset.StandardCharsets;
 import org.springframework.stereotype.Service;
 import com.samsa.websocket.LogWebSocketHandler;
 
+import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+
 @Service
+@Slf4j
 public class SimpleLogMonitor {
-    private static final String LOG_FILE_PATH = "/home/nhnacademy/Desktop/NobFlow/nobflow/logs/logs.log";
+    @Value("${logging.file.path}/logs.log")
+    private String logFilePath;
+    
     private volatile boolean running = true;
 
     public void startMonitoring() {
         try {
-            File logFile = new File(LOG_FILE_PATH);
+            File logFile = new File(logFilePath);
             if (!logFile.exists()) {
                 logFile.getParentFile().mkdirs();
                 logFile.createNewFile();
@@ -36,7 +45,7 @@ public class SimpleLogMonitor {
                 }
             }
         } catch (Exception e) {
-            System.err.println("로그 모니터링 실패: " + e.getMessage());
+            log.error("로그 모니터링 중 오류 발생: {}", e.getMessage());
         }
     }
 
