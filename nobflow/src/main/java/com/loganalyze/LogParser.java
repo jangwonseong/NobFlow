@@ -1,4 +1,4 @@
-package com.samsa;
+package com.loganalyze;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

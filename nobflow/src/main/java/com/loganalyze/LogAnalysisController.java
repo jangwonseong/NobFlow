@@ -1,10 +1,8 @@
-package com.samsa.controller;
+package com.loganalyze;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.samsa.LogParser;
 
 import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDateTime;

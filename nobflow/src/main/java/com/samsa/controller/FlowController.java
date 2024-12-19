@@ -13,23 +13,40 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Flow의 실행, 중지 및 상태 관리를 위한 REST Controller
+ */
 @Slf4j
 @RestController
 @RequestMapping("/api/flow")
 @CrossOrigin(origins = "*")
 public class FlowController {
+    /** Flow 종료 대기 시간(초) */
     private static final int FLOW_SHUTDOWN_TIMEOUT = 30;
+    
+    /** Flow 비동기 실행 Future */
     private volatile CompletableFuture<Void> flowFuture;
+    
+    /** Flow 실행 관리 Pool */
     private FlowPool flowPool;
+    
+    /** 동시성 제어 Lock */
     private final Object flowLock = new Object();
+    
+    /** Flow 실행 상태 */
     private volatile boolean isRunning = false;
 
+    /**
+     * Flow JSON을 받아 실행하는 엔드포인트
+     * @param flowJson Flow 설정 JSON
+     * @return 실행 결과 응답
+     */
     @PostMapping("/run")
     public ResponseEntity<?> runFlow(@RequestBody String flowJson) {
         synchronized (flowLock) {
             if (isRunning) {
                 log.warn("Flow 실행 요청이 거부됨: 이미 실행 중");
-                return ResponseEntity.badRequest().body("Flow가 이미 ��행 중입니다");
+                return ResponseEntity.badRequest().body("Flow가 이미 실행 중입니다");
             }
 
             try {
@@ -69,6 +86,10 @@ public class FlowController {
         }
     }
 
+    /**
+     * 실행 중인 Flow를 중지하는 엔드포인트
+     * @return 중지 결과 응답
+     */
     @PostMapping("/stop")
     public ResponseEntity<?> stopFlow() {
         synchronized (flowLock) {
@@ -108,6 +129,10 @@ public class FlowController {
         }
     }
 
+    /**
+     * Flow 상태를 조회하는 엔드포인트
+     * @return 현재 상태 응답
+     */
     @GetMapping("/status")
     public ResponseEntity<?> getFlowStatus() {
         return ResponseEntity.ok().body(Map.of(
