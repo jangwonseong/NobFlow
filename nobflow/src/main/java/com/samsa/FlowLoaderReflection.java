@@ -2,6 +2,7 @@ package com.samsa;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.flow.FlowLoader.FlowLoadException;
 import com.samsa.core.Flow;
 import com.samsa.core.Pipe;
 import com.samsa.core.node.Node;
@@ -21,7 +22,6 @@ import java.util.stream.Collectors;
 
 import org.reflections.Reflections;
 
-import com.samsa.FlowLoader.FlowLoadException;
 import com.samsa.annotation.NodeType;
 
 @Slf4j

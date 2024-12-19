@@ -1,7 +1,7 @@
 {
     "nodes": [
       {
-        "id": "mqttInNode_1",
+        "id": "MqttInNode_1",
         "type": "MqttInNode",
         "properties": {
           "broker": "tcp://192.168.70.203:1883",
@@ -10,29 +10,29 @@
         }
       },
       {
-        "id": "delayNode_1",
+        "id": "DelayNode_1",
         "type": "DelayNode",
         "properties": {
           "delay": 1000
         }
       },
       {
-        "id": "functionNode_1",
+        "id": "FunctionNode_1",
         "type": "FunctionNode",
         "properties": {
           
         }
       },
       {
-        "id": "debugNode_1",
+        "id": "DebugNode_1",
         "type": "DebugNode",
         "properties": {}
       }
     ],
     "connections": [
-      { "from": "mqttInNode_1", "to": "delayNode_1" },
-      { "from": "delayNode_1", "to": "functionNode_1" },
-      { "from": "functionNode_1", "to": "debugNode_1" }
+      { "from": "MqttInNode_1", "to": "DelayNode_1" },
+      { "from": "DelayNode_1", "to": "FunctionNode_1" },
+      { "from": "FunctionNode_1", "to": "DebugNode_1" }
     ]
   }
   

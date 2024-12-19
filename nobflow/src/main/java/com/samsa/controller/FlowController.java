@@ -4,76 +4,116 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.samsa.core.Flow;
 import com.samsa.core.FlowPool;
-
-import lombok.extern.slf4j.Slf4j;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.samsa.FlowLoaderReflection;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
 @Slf4j
 @RestController
 @RequestMapping("/api/flow")
 @CrossOrigin(origins = "*")
 public class FlowController {
-    private Thread flowThread;
+    private static final int FLOW_SHUTDOWN_TIMEOUT = 30;
+    private volatile CompletableFuture<Void> flowFuture;
     private FlowPool flowPool;
+    private final Object flowLock = new Object();
     private volatile boolean isRunning = false;
 
     @PostMapping("/run")
-    public ResponseEntity<String> runFlow(@RequestBody String flowJson) {
-        try {
+    public ResponseEntity<?> runFlow(@RequestBody String flowJson) {
+        synchronized (flowLock) {
             if (isRunning) {
-                return ResponseEntity.badRequest().body("Flow is already running");
+                log.warn("Flow 실행 요청이 거부됨: 이미 실행 중");
+                return ResponseEntity.badRequest().body("Flow가 이미 실행 중입니다");
             }
 
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode jsonNode = mapper.readTree(flowJson);
-            
-            // Create new FlowPool instance
-            flowPool = new FlowPool();
-            Flow flow = FlowLoaderReflection.createFlow(jsonNode);
-            flowPool.addFlow(flow);
-            
-            // Start flow in a new thread
-            flowThread = new Thread(() -> {
-                try {
-                    isRunning = true;
-                    flowPool.run();
-                } catch (Exception e) {
-                    log.error("Flow execution error", e);
-                } finally {
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode jsonNode = mapper.readTree(flowJson);
+                
+                flowPool = new FlowPool();
+                Flow flow = FlowLoaderReflection.createFlow(jsonNode);
+                flowPool.addFlow(flow);
+                
+                flowFuture = CompletableFuture.runAsync(() -> {
+                    try {
+                        isRunning = true;
+                        log.info("Flow 실행 시작");
+                        flowPool.run();
+                    } catch (Exception e) {
+                        log.error("Flow 실행 중 오류 발생", e);
+                        throw e;
+                    }
+                }).exceptionally(throwable -> {
+                    log.error("Flow 실행 실패", throwable);
                     isRunning = false;
-                }
-            });
-            flowThread.start();
-            
-            return ResponseEntity.ok("Flow started");
-        } catch (Exception e) {
-            log.error("Flow execution failed", e);
-            return ResponseEntity.internalServerError().body(e.getMessage());
+                    return null;
+                });
+                
+                return ResponseEntity.ok().body(Map.of(
+                    "status", "success",
+                    "message", "Flow가 성공적으로 시작되었습니다"
+                ));
+            } catch (Exception e) {
+                log.error("Flow 시작 실패", e);
+                return ResponseEntity.internalServerError().body(Map.of(
+                    "status", "error",
+                    "message", "Flow 시작 실패: " + e.getMessage()
+                ));
+            }
         }
     }
 
     @PostMapping("/stop")
-    public ResponseEntity<String> stopFlow() {
-        try {
+    public ResponseEntity<?> stopFlow() {
+        synchronized (flowLock) {
             if (!isRunning || flowPool == null) {
-                return ResponseEntity.badRequest().body("No running flow");
+                log.warn("Flow 중지 요청이 거부됨: 실행 중인 Flow가 없음");
+                return ResponseEntity.badRequest().body(Map.of(
+                    "status", "error",
+                    "message", "실행 중인 Flow가 없습니다"
+                ));
             }
 
-            // Stop the flow pool
-            flowPool.stop();
-            
-            // Interrupt the flow thread
-            if (flowThread != null && flowThread.isAlive()) {
-                flowThread.interrupt();
+            try {
+                log.info("Flow 중지 시작");
+                flowPool.stop();
+                
+                if (flowFuture != null) {
+                    boolean terminated = flowFuture.cancel(true);
+                    if (!terminated) {
+                        flowFuture.get(FLOW_SHUTDOWN_TIMEOUT, TimeUnit.SECONDS);
+                    }
+                }
+                
+                isRunning = false;
+                log.info("Flow가 성공적으로 중지됨");
+                
+                return ResponseEntity.ok().body(Map.of(
+                    "status", "success",
+                    "message", "Flow가 성공적으로 중지되었습니다"
+                ));
+            } catch (Exception e) {
+                log.error("Flow 중지 실패", e);
+                return ResponseEntity.internalServerError().body(Map.of(
+                    "status", "error",
+                    "message", "Flow 중지 실패: " + e.getMessage()
+                ));
             }
-            
-            isRunning = false;
-            return ResponseEntity.ok("Flow stopped successfully");
-        } catch (Exception e) {
-            log.error("Failed to stop flow", e);
-            return ResponseEntity.internalServerError().body("Failed to stop flow: " + e.getMessage());
         }
     }
+
+    @GetMapping("/status")
+    public ResponseEntity<?> getFlowStatus() {
+        return ResponseEntity.ok().body(Map.of(
+            "isRunning", isRunning,
+            "activeFlows", flowPool != null ? 1 : 0  // Simply return 1 if pool exists
+        ));
+    }
+    
 }

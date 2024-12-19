@@ -34,7 +34,7 @@ public class LogParser {
     
     /** 로그 레벨의 우선순위를 정의하는 열거형 */
     public enum LogLevel {
-        DEBUG(0),
+        DEBUG(0),                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
         INFO(1),
         WARN(2),
         ERROR(3);
@@ -116,12 +116,10 @@ public class LogParser {
      */
     public List<String> getLogsByTimeRange(LocalDateTime start, LocalDateTime end) {
         List<String> filteredLogs = new ArrayList<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                LocalDateTime logTime = extractTimestamp(line, formatter);
+                LocalDateTime logTime = extractTimestamp(line);
                 if (logTime != null && !logTime.isBefore(start) && !logTime.isAfter(end)) {
                     filteredLogs.add(line);
                 }
@@ -162,10 +160,10 @@ public class LogParser {
         return null;
     }
 
-    private LocalDateTime extractTimestamp(String line, DateTimeFormatter formatter) {
+    private LocalDateTime extractTimestamp(String line) {
         try {
             String timestamp = line.substring(0, 19);
-            return LocalDateTime.parse(timestamp, formatter);
+            return LocalDateTime.parse(timestamp, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         } catch (Exception e) {
             return null;
         }

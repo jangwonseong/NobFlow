@@ -2,48 +2,242 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node Blue Flow Viewer</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Flow JSON 업로드 섹션 -->
-        <div class="upload-section">
-            <input type="file" id="flowFile" accept=".json">
-            <button id="loadBtn">Flow 불러오기</button>
-        </div>
+        <header class="header">
+            <h1>Node Blue Flow Viewer</h1>
+        </header>
 
-        <!-- Flow 정보 표시 섹션 -->
-        <div class="flow-info">
-            <h2>Flow 정보</h2>
-            <div id="flowDescription"></div>
-            <button id="runBtn" disabled>실행</button>
-            <button id="stopBtn" disabled>중지</button>
-        </div>
-
-        <!-- 로그 출력 섹션 -->
-        <div class="log-section">
-            <div class="log-controls">
-                <h2>로그</h2>
-                <div class="log-filters">
-                    <label>
-                        <input type="checkbox" value="INFO" checked> INFO
-                    </label>
-                    <label>
-                        <input type="checkbox" value="DEBUG" checked> DEBUG
-                    </label>
-                    <label>
-                        <input type="checkbox" value="WARN" checked> WARN
-                    </label>
-                    <label>
-                        <input type="checkbox" value="ERROR" checked> ERROR
-                    </label>
-                    <input type="text" id="searchLog" placeholder="로그 검색...">
+        <main>
+            <!-- Flow 제어 패널 -->
+            <section class="control-panel">
+                <div class="upload-section">
+                    <div class="file-input-group">
+                        <label for="flowFile" class="file-label">Flow 파일 선택</label>
+                        <input type="file" id="flowFile" accept=".json" class="file-input">
+                        <button id="loadBtn" class="btn primary">Flow 불러오기</button>
+                    </div>
+                    <div class="file-input-group">
+                        <label for="logFile" class="file-label">로그 파일 선택</label>
+                        <input type="file" id="logFile" accept=".log" class="file-input">
+                        <button id="loadLogBtn" class="btn secondary">로그 불러오기</button>
+                    </div>
                 </div>
-            </div>
-            <div id="logOutput"></div>
-        </div>
+
+                <!-- Flow 정보 및 제어 -->
+                <div class="flow-info">
+                    <h2>Flow 정보</h2>
+                    <div id="flowDescription" class="flow-description"></div>
+                    <div class="flow-controls">
+                        <button id="runBtn" class="btn success" disabled>실행</button>
+                        <button id="stopBtn" class="btn danger" disabled>중지</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 로그 분석 섹션 추가 -->
+            <section class="log-analysis">
+                <div class="analysis-header">
+                    <h2>로그 분석</h2>
+                    <button id="analyzeBtn" class="btn primary">로그 분석</button>
+                </div>
+                <div id="analysisResult" class="analysis-container">
+                    <div id="logsByLevel" class="analysis-section"></div>
+                    <div id="errorLogs" class="analysis-section"></div>
+                    <div id="modbusLogs" class="analysis-section"></div>
+                    <div id="mqttLogs" class="analysis-section"></div>
+                </div>
+            </section>
+
+            <!-- 로그 섹션 -->
+            <section class="log-section">
+                <div class="log-header">
+                    <h2>로그 모니터링</h2>
+                    <div class="log-toolbar">
+                        <div class="log-filters">
+                            <label class="filter-item">
+                                <input type="checkbox" value="INFO" checked>
+                                <span class="filter-label info">INFO</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" value="DEBUG" checked>
+                                <span class="filter-label debug">DEBUG</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" value="WARN" checked>
+                                <span class="filter-label warn">WARN</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" value="ERROR" checked>
+                                <span class="filter-label error">ERROR</span>
+                            </label>
+                        </div>
+                        <div class="search-container">
+                            <input type="text" id="searchLog" placeholder="로그 검색..." class="search-input">
+                            <span class="search-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="logOutput" class="log-container">
+                    <pre id="logContent"></pre>
+                </div>
+            </section>
+        </main>
     </div>
+
     <script src="js/main.js"></script>
+
+    <style>
+    :root {
+        --primary-color: #2196F3;
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --danger-color: #F44336;
+        --background-dark: #1e1e1e;
+        --text-light: #ffffff;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        background-color: #f5f5f5;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .control-panel {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .file-input-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .btn.primary { background-color: var(--primary-color); color: white; }
+    .btn.success { background-color: var(--success-color); color: white; }
+    .btn.danger { background-color: var(--danger-color); color: white; }
+
+    .log-container {
+        background-color: var(--background-dark);
+        color: var(--text-light);
+        font-family: 'Consolas', 'Monaco', monospace;
+        padding: 15px;
+        height: 500px;
+        overflow-y: auto;
+        border-radius: 8px;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .log-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .log-filters {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .filter-item {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .filter-label {
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-left: 4px;
+    }
+
+    .filter-label.info { background-color: var(--success-color); }
+    .filter-label.debug { background-color: var(--primary-color); }
+    .filter-label.warn { background-color: var(--warning-color); }
+    .filter-label.error { background-color: var(--danger-color); }
+
+    .search-container {
+        position: relative;
+    }
+
+    .search-input {
+        padding: 8px 32px 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 200px;
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    #logContent {
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    /* 로그 레벨별 스타일 */
+    .log-INFO { color: var(--success-color); }
+    .log-DEBUG { color: var(--primary-color); }
+    .log-WARN { color: var(--warning-color); }
+    .log-ERROR { color: var(--danger-color); }
+
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+        .log-toolbar {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .log-filters {
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            width: 100%;
+        }
+    }
+    </style>
 </body>
-</html> 
+</html>
