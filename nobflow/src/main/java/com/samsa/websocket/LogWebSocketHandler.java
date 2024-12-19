@@ -3,7 +3,7 @@ package com.samsa.websocket;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LogWebSocketHandler extends TextWebSocketHandler {
@@ -16,6 +16,7 @@ public class LogWebSocketHandler extends TextWebSocketHandler {
 
     public static void broadcastLog(String logMessage) {
         TextMessage message = new TextMessage(logMessage);
+        
         sessions.forEach((id, session) -> {
             try {
                 if (session.isOpen()) {

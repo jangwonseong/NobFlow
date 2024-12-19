@@ -12,7 +12,7 @@
             background-color: #1e1e1e;
             color: #ffffff;
             padding: 10px;
-            font-family: monospace;
+            font-family: 'D2Coding', 'Consolas', monospace;
             white-space: pre-wrap;
         }
         .log-entry {
@@ -261,6 +261,8 @@
         ws.onmessage = function(event) {
             const logEntry = document.createElement('div');
             logEntry.className = 'log-entry';
+            // UTF-8 디코딩
+            const decoder = new TextDecoder('utf-8');
             logEntry.textContent = event.data;
             logContainer.appendChild(logEntry);
             

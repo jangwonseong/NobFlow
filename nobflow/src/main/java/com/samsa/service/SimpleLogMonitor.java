@@ -1,7 +1,7 @@
 package com.samsa.service;
 
-import java.io.File;
-import java.io.RandomAccessFile;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import org.springframework.stereotype.Service;
 import com.samsa.websocket.LogWebSocketHandler;
 
@@ -18,20 +18,21 @@ public class SimpleLogMonitor {
                 logFile.createNewFile();
             }
 
-            try (RandomAccessFile reader = new RandomAccessFile(LOG_FILE_PATH, "r")) {
-                long lastPosition = reader.length();
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(logFile), StandardCharsets.UTF_8))) {
+                
+                long fileLength = logFile.length();
+                if (fileLength > 0) {
+                    reader.skip(fileLength);
+                }
 
                 while (running) {
-                    long length = reader.length();
-                    if (length > lastPosition) {
-                        reader.seek(lastPosition);
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            LogWebSocketHandler.broadcastLog(line);
-                        }
-                        lastPosition = reader.getFilePointer();
+                    String line = reader.readLine();
+                    if (line != null) {
+                        LogWebSocketHandler.broadcastLog(line);
+                    } else {
+                        Thread.sleep(100);
                     }
-                    Thread.sleep(100);
                 }
             }
         } catch (Exception e) {
