@@ -1,133 +1,243 @@
-2024-12-20 09:13:33 [main] INFO  com.samsa.NobflowApplication - Starting NobflowApplication using Java 17.0.12 with PID 621727 (/home/nhnacademy/Desktop/NobFlow/nobflow/target/classes started by nhnacademy in /home/nhnacademy/Desktop/NobFlow)
-2024-12-20 09:13:33 [main] INFO  com.samsa.NobflowApplication - No active profile set, falling back to 1 default profile: "default"
-2024-12-20 09:13:33 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
-2024-12-20 09:13:33 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
-2024-12-20 09:13:33 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-12-20 09:13:33 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
-2024-12-20 09:13:33 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-12-20 09:13:33 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 684 ms
-2024-12-20 09:13:34 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
-2024-12-20 09:13:34 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
-2024-12-20 09:13:34 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
-2024-12-20 09:13:34 [main] INFO  com.samsa.NobflowApplication - Started NobflowApplication in 1.286 seconds (process running for 1.62)
-2024-12-20 09:13:34 [main] INFO  com.samsa.NobflowApplication - NobFlow 애플리케이션이 성공적으로 시작되었습니다.
-2024-12-20 09:13:34 [main] INFO  com.samsa.NobflowApplication - 서버 주소: http://localhost:8081
-2024-12-20 09:13:46 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-20 09:13:46 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-12-20 09:13:46 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2024-12-20 09:14:07 [http-nio-8081-exec-7] INFO  org.reflections.Reflections - Reflections took 22 ms to scan 1 urls, producing 6 keys and 20 values
-2024-12-20 09:14:07 [ForkJoinPool.commonPool-worker-1] INFO  com.samsa.controller.FlowController - Flow 실행 시작
-2024-12-20 09:14:07 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:07 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:07 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:07 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:07 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:09 [Thread-4] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/#'을 구독했습니다.
-2024-12-20 09:14:13 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/캠퍼스_LL/e/voltage'에서 메시지 수신: {"time":1734653654329,"value":379.31}
-2024-12-20 09:14:13 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/캠퍼스_LN/e/voltage'에서 메시지 수신: {"time":1734653654329,"value":218.99}
-2024-12-20 09:14:13 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/캠퍼스1/e/power_meter'에서 메시지 수신: {"time":1734653654429,"type":5,"leakageCurrent":0,"current":2709,"activePower":5073,"reactivePower":-1589,"tapparentPower":5918,"powerFactor":85.72,"currentUnbalance":42.95,"lines":[]}
-2024-12-20 09:14:13 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/전등1/e/power_meter'에서 메시지 수신: {"time":1734653654530,"type":3,"leakageCurrent":0,"current":842,"activePower":1577,"reactivePower":-398,"tapparentPower":1839,"powerFactor":85.77,"currentUnbalance":0,"lines":[{"voltage":218.04,"current":8.42,"activePower":1577,"reactivePower":-398,"tapparentPower":1839,"voltageUnbalance":0,"currentUnbalance":0,"phase":350.54,"powerFactor":85.77}]}
-2024-12-20 09:14:13 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/전등2/e/power_meter'에서 메시지 수신: {"time":1734653654630,"type":1,"leakageCurrent":0,"current":403,"activePower":756,"reactivePower":-184,"tapparentPower":885,"powerFactor":85.36,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:13 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/전등3/e/power_meter'에서 메시지 수신: {"time":1734653654728,"type":2,"leakageCurrent":0,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"powerFactor":0,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:13 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/강의실b_바닥/e/power_meter'에서 메시지 수신: {"time":1734653654828,"type":3,"leakageCurrent":0,"current":7,"activePower":4,"reactivePower":-16,"tapparentPower":14,"powerFactor":33.33,"currentUnbalance":0,"lines":[{"voltage":218.01,"current":0.07,"activePower":4,"reactivePower":-16,"tapparentPower":14,"voltageUnbalance":0,"currentUnbalance":0,"phase":293.14,"powerFactor":33.33}]}
-2024-12-20 09:14:13 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/강의실a_바닥1/e/power_meter'에서 메시지 수신: {"time":1734653654930,"type":1,"leakageCurrent":0,"current":294,"activePower":528,"reactivePower":-285,"tapparentPower":633,"powerFactor":83.33,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:14 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:14 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 6dfc9a61-2b51-42f3-81f1-d7ae5fd180f7 - 처리 시작
-2024-12-20 09:14:14 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:14 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/캠퍼스_LL/e/voltage, {"time":1734653654329,"value":379.31}}
-2024-12-20 09:14:14 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:14 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 6dfc9a61-2b51-42f3-81f1-d7ae5fd180f7 - 처리 완료
-2024-12-20 09:14:14 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:14 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[2313a347-8b40-4975-b70b-dbdb40b7216c] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/캠퍼스_LL/e/voltage, {"time":1734653654329,"value":379.31}}
-2024-12-20 09:14:14 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:14 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:14 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:14 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/강의실a_바닥2/e/power_meter'에서 메시지 수신: {"time":1734653655030,"type":2,"leakageCurrent":0,"current":335,"activePower":607,"reactivePower":-324,"tapparentPower":734,"powerFactor":82.67,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:14 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/프로젝터1/e/power_meter'에서 메시지 수신: {"time":1734653655131,"type":3,"leakageCurrent":0,"current":45,"activePower":24,"reactivePower":-86,"tapparentPower":98,"powerFactor":24.39,"currentUnbalance":0,"lines":[{"voltage":218.12,"current":0.45,"activePower":24,"reactivePower":-86,"tapparentPower":98,"voltageUnbalance":0,"currentUnbalance":0,"phase":282.93,"powerFactor":24.39}]}
-2024-12-20 09:14:14 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/프로젝터2/e/power_meter'에서 메시지 수신: {"time":1734653655232,"type":1,"leakageCurrent":0,"current":26,"activePower":7,"reactivePower":-57,"tapparentPower":60,"powerFactor":12,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:14 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/회의실/e/power_meter'에서 메시지 수신: {"time":1734653655332,"type":2,"leakageCurrent":0,"current":14,"activePower":4,"reactivePower":-28,"tapparentPower":31,"powerFactor":15.38,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:14 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/서버실/e/power_meter'에서 메시지 수신: {"time":1734653655431,"type":3,"leakageCurrent":0,"current":214,"activePower":405,"reactivePower":-112,"tapparentPower":463,"powerFactor":87.56,"currentUnbalance":0,"lines":[{"voltage":218.06,"current":2.14,"activePower":405,"reactivePower":-112,"tapparentPower":463,"voltageUnbalance":0,"currentUnbalance":0,"phase":344.3,"powerFactor":87.56}]}
-2024-12-20 09:14:14 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/간판/e/power_meter'에서 메시지 수신: {"time":1734653655533,"type":1,"leakageCurrent":0,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"powerFactor":0,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:14 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/페어룸/e/power_meter'에서 메시지 수신: {"time":1734653655631,"type":2,"leakageCurrent":0,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"powerFactor":0,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:14 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/사무실_전열1/e/power_meter'에서 메시지 수신: {"time":1734653655733,"type":3,"leakageCurrent":0,"current":111,"activePower":129,"reactivePower":-67,"tapparentPower":240,"powerFactor":54,"currentUnbalance":0,"lines":[{"voltage":218.17,"current":1.11,"activePower":129,"reactivePower":-67,"tapparentPower":240,"voltageUnbalance":0,"currentUnbalance":0,"phase":322.86,"powerFactor":54}]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/사무실_전열2/e/power_meter'에서 메시지 수신: {"time":1734653655836,"type":3,"leakageCurrent":0,"current":65,"activePower":69,"reactivePower":-79,"tapparentPower":144,"powerFactor":48.33,"currentUnbalance":0,"lines":[{"voltage":218.18,"current":0.65,"activePower":69,"reactivePower":-79,"tapparentPower":144,"voltageUnbalance":0,"currentUnbalance":0,"phase":301.92,"powerFactor":48.33}]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/사무실_복사기/e/power_meter'에서 메시지 수신: {"time":1734653655935,"type":1,"leakageCurrent":0,"current":6,"activePower":7,"reactivePower":0,"tapparentPower":14,"powerFactor":50,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/빌트인_전열/e/power_meter'에서 메시지 수신: {"time":1734653656035,"type":2,"leakageCurrent":0,"current":7,"activePower":2,"reactivePower":-12,"tapparentPower":16,"powerFactor":14.28,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/사무실_전열3/e/power_meter'에서 메시지 수신: {"time":1734653656135,"type":3,"leakageCurrent":0,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"powerFactor":0,"currentUnbalance":0,"lines":[{"voltage":218.2,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"voltageUnbalance":0,"currentUnbalance":0,"phase":0,"powerFactor":0}]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/정수기/e/power_meter'에서 메시지 수신: {"time":1734653656235,"type":1,"leakageCurrent":0,"current":268,"activePower":578,"reactivePower":117,"tapparentPower":588,"powerFactor":98.36,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/하이브_전열/e/power_meter'에서 메시지 수신: {"time":1734653656334,"type":2,"leakageCurrent":0,"current":9,"activePower":4,"reactivePower":-16,"tapparentPower":21,"powerFactor":22.22,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:15 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:15 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 03e43715-9d8d-4bc0-ba00-f9ae588ee2bc - 처리 시작
-2024-12-20 09:14:15 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:15 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/캠퍼스_LN/e/voltage, {"time":1734653654329,"value":218.99}}
-2024-12-20 09:14:15 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:15 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 03e43715-9d8d-4bc0-ba00-f9ae588ee2bc - 처리 완료
-2024-12-20 09:14:15 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:15 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[2313a347-8b40-4975-b70b-dbdb40b7216c] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/캠퍼스_LN/e/voltage, {"time":1734653654329,"value":218.99}}
-2024-12-20 09:14:15 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:15 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:15 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/바텐_전열/e/power_meter'에서 메시지 수신: {"time":1734653656435,"type":3,"leakageCurrent":0,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"powerFactor":0,"currentUnbalance":0,"lines":[{"voltage":218.2,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"voltageUnbalance":0,"currentUnbalance":0,"phase":0,"powerFactor":0}]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/S_P/e/power_meter'에서 메시지 수신: {"time":1734653656536,"type":1,"leakageCurrent":0,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"powerFactor":0,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/공조기/e/power_meter'에서 메시지 수신: {"time":1734653656635,"type":2,"leakageCurrent":0,"current":206,"activePower":230,"reactivePower":-21,"tapparentPower":453,"powerFactor":50.79,"currentUnbalance":0,"lines":[]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/AC/e/power_meter'에서 메시지 수신: {"time":1734653656737,"type":3,"leakageCurrent":0,"current":86,"activePower":115,"reactivePower":0,"tapparentPower":189,"powerFactor":60.75,"currentUnbalance":0,"lines":[{"voltage":218.23,"current":0.86,"activePower":115,"reactivePower":0,"tapparentPower":189,"voltageUnbalance":0,"currentUnbalance":0,"phase":347.08,"powerFactor":60.75}]}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/e/activity'에서 메시지 수신: {"time":1734653656679,"value":20}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/e/infrared_and_visible'에서 메시지 수신: {"time":1734653656679,"value":45}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/e/pressure'에서 메시지 수신: {"time":1734653656679,"value":1015.4}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/e/co2'에서 메시지 수신: {"time":1734653656679,"value":723}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/e/tvoc'에서 메시지 수신: {"time":1734653656679,"value":141}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/e/humidity'에서 메시지 수신: {"time":1734653656679,"value":21}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/e/infrared'에서 메시지 수신: {"time":1734653656679,"value":7}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/e/temperature'에서 메시지 수신: {"time":1734653656679,"value":19.9}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/e/illumination'에서 메시지 수신: {"time":1734653656679,"value":65}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/g/24e124fffef5dccc/e/lora'에서 메시지 수신: {"time":1734653656679,"value":{"dr":2,"rssi":-72,"snr":13.2,"channel":4,"frequency":922900000,"sf":10}}
-2024-12-20 09:14:15 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124128c067999/sp/입구/n/입구/g/24e124fffef79304/e/lora'에서 메시지 수신: {"time":1734653656679,"value":{"dr":2,"rssi":-52,"snr":13,"channel":4,"frequency":922900000,"sf":10}}
-2024-12-20 09:14:16 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:16 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 7a1f9d9e-2a04-4321-8b7e-2ad13930d578 - 처리 시작
-2024-12-20 09:14:16 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:16 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/캠퍼스1/e/power_meter, {"time":1734653654429,"type":5,"leakageCurrent":0,"current":2709,"activePower":5073,"reactivePower":-1589,"tapparentPower":5918,"powerFactor":85.72,"currentUnbalance":42.95,"lines":[]}}
-2024-12-20 09:14:16 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:16 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 7a1f9d9e-2a04-4321-8b7e-2ad13930d578 - 처리 완료
-2024-12-20 09:14:16 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:16 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[2313a347-8b40-4975-b70b-dbdb40b7216c] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/캠퍼스1/e/power_meter, {"time":1734653654429,"type":5,"leakageCurrent":0,"current":2709,"activePower":5073,"reactivePower":-1589,"tapparentPower":5918,"powerFactor":85.72,"currentUnbalance":42.95,"lines":[]}}
-2024-12-20 09:14:16 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:16 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:16 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:17 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:17 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: de0eac67-1b47-4243-94e1-81380531cebd - 처리 시작
-2024-12-20 09:14:17 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:17 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:17 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/전등1/e/power_meter, {"time":1734653654530,"type":3,"leakageCurrent":0,"current":842,"activePower":1577,"reactivePower":-398,"tapparentPower":1839,"powerFactor":85.77,"currentUnbalance":0,"lines":[{"voltage":218.04,"current":8.42,"activePower":1577,"reactivePower":-398,"tapparentPower":1839,"voltageUnbalance":0,"currentUnbalance":0,"phase":350.54,"powerFactor":85.77}]}}
-2024-12-20 09:14:17 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: de0eac67-1b47-4243-94e1-81380531cebd - 처리 완료
-2024-12-20 09:14:17 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:17 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[2313a347-8b40-4975-b70b-dbdb40b7216c] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/전등1/e/power_meter, {"time":1734653654530,"type":3,"leakageCurrent":0,"current":842,"activePower":1577,"reactivePower":-398,"tapparentPower":1839,"powerFactor":85.77,"currentUnbalance":0,"lines":[{"voltage":218.04,"current":8.42,"activePower":1577,"reactivePower":-398,"tapparentPower":1839,"voltageUnbalance":0,"currentUnbalance":0,"phase":350.54,"powerFactor":85.77}]}}
-2024-12-20 09:14:17 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:17 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:17 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:18 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124785c389010/n/정수기 위/e/battery'에서 메시지 수신: {"time":1734653659022,"value":1}
-2024-12-20 09:14:18 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:18 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: aca903dc-6ab4-4699-a105-d4b748226141 - 처리 시작
-2024-12-20 09:14:18 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:18 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:18 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/전등2/e/power_meter, {"time":1734653654630,"type":1,"leakageCurrent":0,"current":403,"activePower":756,"reactivePower":-184,"tapparentPower":885,"powerFactor":85.36,"currentUnbalance":0,"lines":[]}}
-2024-12-20 09:14:18 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: aca903dc-6ab4-4699-a105-d4b748226141 - 처리 완료
-2024-12-20 09:14:18 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:18 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[2313a347-8b40-4975-b70b-dbdb40b7216c] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/전등2/e/power_meter, {"time":1734653654630,"type":1,"leakageCurrent":0,"current":403,"activePower":756,"reactivePower":-184,"tapparentPower":885,"powerFactor":85.36,"currentUnbalance":0,"lines":[]}}
-2024-12-20 09:14:18 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:18 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:18 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:18 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124785c389010/n/정수기 위/e/temperature'에서 메시지 수신: {"time":1734653659022,"value":18.3}
-2024-12-20 09:14:18 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124785c389010/n/정수기 위/e/humidity'에서 메시지 수신: {"time":1734653659022,"value":22.5}
-2024-12-20 09:14:18 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124785c389010/n/정수기 위/g/24e124fffef5dccc/e/lora'에서 메시지 수신: {"time":1734653659022,"value":{"dr":0,"rssi":-57,"snr":9.8,"channel":3,"frequency":922700000,"sf":12}}
-2024-12-20 09:14:18 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124785c389010/n/정수기 위/g/24e124fffef79304/e/lora'에서 메시지 수신: {"time":1734653659022,"value":{"dr":0,"rssi":-55,"snr":9,"channel":3,"frequency":922700000,"sf":12}}
-2024-12-20 09:14:19 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:19 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: a5043b17-5df3-47e7-87c9-eb4f50a7bbf3 - 처리 시작
-2024-12-20 09:14:19 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 5d590bc0-853c-44c2-bfc6-c449127d407d
-2024-12-20 09:14:19 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/전등3/e/power_meter, {"time":1734653654728,"type":2,"leakageCurrent":0,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"powerFactor":0,"currentUnbalance":0,"lines":[]}}
-2024-12-20 09:14:19 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:19 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: a5043b17-5df3-47e7-87c9-eb4f50a7bbf3 - 처리 완료
-2024-12-20 09:14:19 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:19 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 27212e11-091d-4d7b-8c16-35dfe1115d5e
-2024-12-20 09:14:19 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
-2024-12-20 09:14:19 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[2313a347-8b40-4975-b70b-dbdb40b7216c] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/campus/d/gem3500_1/n/전등3/e/power_meter, {"time":1734653654728,"type":2,"leakageCurrent":0,"current":0,"activePower":0,"reactivePower":0,"tapparentPower":0,"powerFactor":0,"currentUnbalance":0,"lines":[]}}
-2024-12-20 09:14:19 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:37 [main] INFO  com.samsa.NobflowApplication - Starting NobflowApplication using Java 17.0.12 with PID 660861 (/home/nhnacademy/Desktop/NobFlow/nobflow/target/classes started by nhnacademy in /home/nhnacademy/Desktop/NobFlow)
+2024-12-20 10:17:37 [main] INFO  com.samsa.NobflowApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-20 10:17:37 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2024-12-20 10:17:37 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2024-12-20 10:17:37 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-20 10:17:37 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-12-20 10:17:37 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-20 10:17:37 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 634 ms
+2024-12-20 10:17:37 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2024-12-20 10:17:38 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2024-12-20 10:17:38 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2024-12-20 10:17:38 [main] INFO  com.samsa.NobflowApplication - Started NobflowApplication in 1.294 seconds (process running for 1.607)
+2024-12-20 10:17:38 [main] INFO  com.samsa.NobflowApplication - NobFlow 애플리케이션이 성공적으로 시작되었습니다.
+2024-12-20 10:17:38 [main] INFO  com.samsa.NobflowApplication - 서버 주소: http://localhost:8081
+2024-12-20 10:17:40 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-20 10:17:40 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-20 10:17:40 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-12-20 10:17:47 [http-nio-8081-exec-3] INFO  org.reflections.Reflections - Reflections took 17 ms to scan 1 urls, producing 6 keys and 20 values
+2024-12-20 10:17:47 [ForkJoinPool.commonPool-worker-1] INFO  com.samsa.controller.FlowController - Flow 실행 시작
+2024-12-20 10:17:47 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:47 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:47 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:47 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:47 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:47 [Thread-4] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/#'을 구독했습니다.
+2024-12-20 10:17:48 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/temperature'에서 메시지 수신: {"time":1734657468604,"value":19}
+2024-12-20 10:17:48 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/co2'에서 메시지 수신: {"time":1734657468604,"value":656}
+2024-12-20 10:17:48 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/battery'에서 메시지 수신: {"time":1734657468604,"value":1}
+2024-12-20 10:17:48 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/humidity'에서 메시지 수신: {"time":1734657468604,"value":23.5}
+2024-12-20 10:17:48 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/g/24e124fffef5dccc/e/lora'에서 메시지 수신: {"time":1734657468604,"value":{"dr":2,"rssi":-67,"snr":13.8,"channel":4,"frequency":922900000,"sf":10}}
+2024-12-20 10:17:48 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/g/24e124fffef79304/e/lora'에서 메시지 수신: {"time":1734657468604,"value":{"dr":2,"rssi":-67,"snr":13.8,"channel":4,"frequency":922900000,"sf":10}}
+2024-12-20 10:17:49 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:49 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 2b8a2443-226d-4d7b-bf86-b002cd9b043b - 처리 시작
+2024-12-20 10:17:49 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:49 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/temperature, {"time":1734657468604,"value":19}}
+2024-12-20 10:17:49 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:49 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 2b8a2443-226d-4d7b-bf86-b002cd9b043b - 처리 완료
+2024-12-20 10:17:49 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:49 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:49 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/temperature, {"time":1734657468604,"value":19}}
+2024-12-20 10:17:49 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:49 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:50 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:50 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 595a6049-11ee-4c9a-a10e-85b1f5b6d865 - 처리 시작
+2024-12-20 10:17:50 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:50 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/co2, {"time":1734657468604,"value":656}}
+2024-12-20 10:17:50 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:50 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 595a6049-11ee-4c9a-a10e-85b1f5b6d865 - 처리 완료
+2024-12-20 10:17:50 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:50 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/co2, {"time":1734657468604,"value":656}}
+2024-12-20 10:17:50 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:50 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:50 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:51 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:51 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: c8f30393-3e2c-446a-ba9d-0e2cdac73409 - 처리 시작
+2024-12-20 10:17:51 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:51 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/battery, {"time":1734657468604,"value":1}}
+2024-12-20 10:17:51 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:51 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: c8f30393-3e2c-446a-ba9d-0e2cdac73409 - 처리 완료
+2024-12-20 10:17:51 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:51 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:51 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/battery, {"time":1734657468604,"value":1}}
+2024-12-20 10:17:51 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:51 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:52 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/humidity'에서 메시지 수신: {"time":1734657472491,"value":26}
+2024-12-20 10:17:52 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/temperature'에서 메시지 수신: {"time":1734657472491,"value":18.8}
+2024-12-20 10:17:52 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/pressure'에서 메시지 수신: {"time":1734657472491,"value":1022.7}
+2024-12-20 10:17:52 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/co2'에서 메시지 수신: {"time":1734657472491,"value":673}
+2024-12-20 10:17:52 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/g/24e124fffef5dccc/e/lora'에서 메시지 수신: {"time":1734657472491,"value":{"dr":0,"rssi":-42,"snr":8.8,"channel":3,"frequency":922700000,"sf":12}}
+2024-12-20 10:17:52 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/g/24e124fffef79304/e/lora'에서 메시지 수신: {"time":1734657472491,"value":{"dr":0,"rssi":-60,"snr":9.5,"channel":3,"frequency":922700000,"sf":12}}
+2024-12-20 10:17:52 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:52 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: e3e54ebc-3148-45f7-a91d-de9363f4bd81 - 처리 시작
+2024-12-20 10:17:52 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:52 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:52 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/humidity, {"time":1734657468604,"value":23.5}}
+2024-12-20 10:17:52 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: e3e54ebc-3148-45f7-a91d-de9363f4bd81 - 처리 완료
+2024-12-20 10:17:52 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:52 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/e/humidity, {"time":1734657468604,"value":23.5}}
+2024-12-20 10:17:52 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:52 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:52 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:53 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:53 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 6d467fe2-56c0-48e7-9af4-8ce392abef36 - 처리 시작
+2024-12-20 10:17:53 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:53 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:53 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/g/24e124fffef5dccc/e/lora, {"time":1734657468604,"value":{"dr":2,"rssi":-67,"snr":13.8,"channel":4,"frequency":922900000,"sf":10}}}
+2024-12-20 10:17:53 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 6d467fe2-56c0-48e7-9af4-8ce392abef36 - 처리 완료
+2024-12-20 10:17:53 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:53 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/g/24e124fffef5dccc/e/lora, {"time":1734657468604,"value":{"dr":2,"rssi":-67,"snr":13.8,"channel":4,"frequency":922900000,"sf":10}}}
+2024-12-20 10:17:53 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:53 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:53 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:54 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:54 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 0bab73ce-85b3-4223-bc62-46e75b4a65f7 - 처리 시작
+2024-12-20 10:17:54 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:54 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:54 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/g/24e124fffef79304/e/lora, {"time":1734657468604,"value":{"dr":2,"rssi":-67,"snr":13.8,"channel":4,"frequency":922900000,"sf":10}}}
+2024-12-20 10:17:54 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 0bab73ce-85b3-4223-bc62-46e75b4a65f7 - 처리 완료
+2024-12-20 10:17:54 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:54 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/hive/d/24e124725d081175/sp/8인 책상/n/8인 책상/g/24e124fffef79304/e/lora, {"time":1734657468604,"value":{"dr":2,"rssi":-67,"snr":13.8,"channel":4,"frequency":922900000,"sf":10}}}
+2024-12-20 10:17:54 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:54 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:54 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:55 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/e/humidity'에서 메시지 수신: {"time":1734657475554,"value":22}
+2024-12-20 10:17:55 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/e/temperature'에서 메시지 수신: {"time":1734657475554,"value":18.1}
+2024-12-20 10:17:55 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/g/24e124fffef5dccc/e/lora'에서 메시지 수신: {"time":1734657475554,"value":{"dr":2,"rssi":-68,"snr":12,"channel":4,"frequency":922900000,"sf":10}}
+2024-12-20 10:17:55 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/g/24e124fffef79304/e/lora'에서 메시지 수신: {"time":1734657475554,"value":{"dr":2,"rssi":-51,"snr":13,"channel":4,"frequency":922900000,"sf":10}}
+2024-12-20 10:17:55 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:55 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 5f95d59c-a0b9-477a-b21c-91b5540f769e - 처리 시작
+2024-12-20 10:17:55 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:55 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:55 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/humidity, {"time":1734657472491,"value":26}}
+2024-12-20 10:17:55 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 5f95d59c-a0b9-477a-b21c-91b5540f769e - 처리 완료
+2024-12-20 10:17:55 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:55 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:55 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:55 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/humidity, {"time":1734657472491,"value":26}}
+2024-12-20 10:17:55 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:56 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/e/occupancy'에서 메시지 수신: {"time":1734657475881,"value":0}
+2024-12-20 10:17:56 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/e/battery'에서 메시지 수신: {"time":1734657475881,"value":44}
+2024-12-20 10:17:56 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/e/distance'에서 메시지 수신: {"time":1734657475881,"value":2276}
+2024-12-20 10:17:56 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/g/24e124fffef79304/e/lora'에서 메시지 수신: {"time":1734657475881,"value":{"dr":0,"rssi":-42,"snr":8.2,"channel":1,"frequency":922300000,"sf":12}}
+2024-12-20 10:17:56 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/g/24e124fffef5dccc/e/lora'에서 메시지 수신: {"time":1734657475881,"value":{"dr":0,"rssi":-52,"snr":8.2,"channel":1,"frequency":922300000,"sf":12}}
+2024-12-20 10:17:56 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/e/distance'에서 메시지 수신: {"time":1734657475881,"value":2276}
+2024-12-20 10:17:56 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/e/battery'에서 메시지 수신: {"time":1734657475881,"value":44}
+2024-12-20 10:17:56 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/e/occupancy'에서 메시지 수신: {"time":1734657475881,"value":0}
+2024-12-20 10:17:56 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/g/24e124fffef79304/e/lora'에서 메시지 수신: {"time":1734657475881,"value":{"dr":0,"rssi":-100,"snr":-14.8,"channel":6,"frequency":923300000,"sf":12}}
+2024-12-20 10:17:56 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:56 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 5c12ddac-c496-4d31-937e-38e1ad747cd1 - 처리 시작
+2024-12-20 10:17:56 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:56 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:56 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/temperature, {"time":1734657472491,"value":18.8}}
+2024-12-20 10:17:56 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 5c12ddac-c496-4d31-937e-38e1ad747cd1 - 처리 완료
+2024-12-20 10:17:56 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:56 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/temperature, {"time":1734657472491,"value":18.8}}
+2024-12-20 10:17:56 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:56 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:56 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:57 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:57 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:57 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: b3b5549e-cede-4678-b282-5a5d163cf29f - 처리 시작
+2024-12-20 10:17:57 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:57 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/pressure, {"time":1734657472491,"value":1022.7}}
+2024-12-20 10:17:57 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: b3b5549e-cede-4678-b282-5a5d163cf29f - 처리 완료
+2024-12-20 10:17:57 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:57 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:57 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/pressure, {"time":1734657472491,"value":1022.7}}
+2024-12-20 10:17:57 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:57 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:58 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: bcd9ee4a-bc95-460b-8878-27a96aa2f47a - 처리 시작
+2024-12-20 10:17:58 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:58 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/co2, {"time":1734657472491,"value":673}}
+2024-12-20 10:17:58 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:58 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: bcd9ee4a-bc95-460b-8878-27a96aa2f47a - 처리 완료
+2024-12-20 10:17:58 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:58 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:58 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/e/co2, {"time":1734657472491,"value":673}}
+2024-12-20 10:17:58 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:58 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:58 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:59 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 52f09cb6-49da-4fec-8475-ae81a2f9ff54 - 처리 시작
+2024-12-20 10:17:59 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:59 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/g/24e124fffef5dccc/e/lora, {"time":1734657472491,"value":{"dr":0,"rssi":-42,"snr":8.8,"channel":3,"frequency":922700000,"sf":12}}}
+2024-12-20 10:17:59 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:17:59 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:59 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 52f09cb6-49da-4fec-8475-ae81a2f9ff54 - 처리 완료
+2024-12-20 10:17:59 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:59 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/g/24e124fffef5dccc/e/lora, {"time":1734657472491,"value":{"dr":0,"rssi":-42,"snr":8.8,"channel":3,"frequency":922700000,"sf":12}}}
+2024-12-20 10:17:59 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:17:59 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:17:59 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:00 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:00 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: a12cd153-ffb7-46c5-bf3b-6bd5b749bd72 - 처리 시작
+2024-12-20 10:18:00 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:00 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/g/24e124fffef79304/e/lora, {"time":1734657472491,"value":{"dr":0,"rssi":-60,"snr":9.5,"channel":3,"frequency":922700000,"sf":12}}}
+2024-12-20 10:18:00 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:00 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: a12cd153-ffb7-46c5-bf3b-6bd5b749bd72 - 처리 완료
+2024-12-20 10:18:00 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:00 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:00 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/office/d/24e124126d152919/n/보드/g/24e124fffef79304/e/lora, {"time":1734657472491,"value":{"dr":0,"rssi":-60,"snr":9.5,"channel":3,"frequency":922700000,"sf":12}}}
+2024-12-20 10:18:00 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:00 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:01 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:01 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 5de29ca7-2057-48f1-b84b-a29e2ff4e97e - 처리 시작
+2024-12-20 10:18:01 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:01 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/e/humidity, {"time":1734657475554,"value":22}}
+2024-12-20 10:18:01 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:01 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 5de29ca7-2057-48f1-b84b-a29e2ff4e97e - 처리 완료
+2024-12-20 10:18:01 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:01 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/e/humidity, {"time":1734657475554,"value":22}}
+2024-12-20 10:18:01 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:01 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:01 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:02 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:02 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: e9b38df7-29a5-47d9-a041-43a430ffc9e0 - 처리 시작
+2024-12-20 10:18:02 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:02 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/e/temperature, {"time":1734657475554,"value":18.1}}
+2024-12-20 10:18:02 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:02 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: e9b38df7-29a5-47d9-a041-43a430ffc9e0 - 처리 완료
+2024-12-20 10:18:02 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:02 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/e/temperature, {"time":1734657475554,"value":18.1}}
+2024-12-20 10:18:02 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:02 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:02 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:03 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/e/pressure'에서 메시지 수신: {"time":1734657482989,"value":1022.7}
+2024-12-20 10:18:03 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/e/humidity'에서 메시지 수신: {"time":1734657482989,"value":35}
+2024-12-20 10:18:03 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/e/co2'에서 메시지 수신: {"time":1734657482989,"value":1476}
+2024-12-20 10:18:03 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/e/temperature'에서 메시지 수신: {"time":1734657482989,"value":19.2}
+2024-12-20 10:18:03 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/g/24e124fffef79304/e/lora'에서 메시지 수신: {"time":1734657482989,"value":{"dr":0,"rssi":-81,"snr":7.5,"channel":3,"frequency":922700000,"sf":12}}
+2024-12-20 10:18:03 [MQTT Call: dfahjklasdjf] INFO  com.samsa.node.out.MqttInNode - 토픽 'data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/g/24e124fffef5dccc/e/lora'에서 메시지 수신: {"time":1734657482989,"value":{"dr":0,"rssi":-77,"snr":6.2,"channel":3,"frequency":922700000,"sf":12}}
+2024-12-20 10:18:03 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 8270966f-9936-4011-9b53-4b03e2264544 - 처리 시작
+2024-12-20 10:18:03 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:03 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/g/24e124fffef5dccc/e/lora, {"time":1734657475554,"value":{"dr":2,"rssi":-68,"snr":12,"channel":4,"frequency":922900000,"sf":10}}}
+2024-12-20 10:18:03 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:03 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 8270966f-9936-4011-9b53-4b03e2264544 - 처리 완료
+2024-12-20 10:18:03 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:03 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:03 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/g/24e124fffef5dccc/e/lora, {"time":1734657475554,"value":{"dr":2,"rssi":-68,"snr":12,"channel":4,"frequency":922900000,"sf":10}}}
+2024-12-20 10:18:03 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:03 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:03 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:04 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:04 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 77b83016-5068-4427-9c12-3f0b5b8fd4fe - 처리 시작
+2024-12-20 10:18:04 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:04 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/g/24e124fffef79304/e/lora, {"time":1734657475554,"value":{"dr":2,"rssi":-51,"snr":13,"channel":4,"frequency":922900000,"sf":10}}}
+2024-12-20 10:18:04 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:04 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 77b83016-5068-4427-9c12-3f0b5b8fd4fe - 처리 완료
+2024-12-20 10:18:04 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:04 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/meeting_room/d/24e124136d151836/n/안쪽벽 중앙/g/24e124fffef79304/e/lora, {"time":1734657475554,"value":{"dr":2,"rssi":-51,"snr":13,"channel":4,"frequency":922900000,"sf":10}}}
+2024-12-20 10:18:04 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:04 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:04 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:05 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:05 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 7185901c-e43f-4c14-ae65-c3ef80c329ef - 처리 시작
+2024-12-20 10:18:05 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b2dd8043-9e19-414d-9c39-41c88e0fa65d
+2024-12-20 10:18:05 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/e/occupancy, {"time":1734657475881,"value":0}}
+2024-12-20 10:18:05 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:05 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 7185901c-e43f-4c14-ae65-c3ef80c329ef - 처리 완료
+2024-12-20 10:18:05 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:05 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[c663e11b-c02b-434a-9dc5-c6c451ac491a] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/pair_room/d/24e124617d157233/n/3/e/occupancy, {"time":1734657475881,"value":0}}
+2024-12-20 10:18:05 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 196dd063-5c07-4029-a04c-76f872f06a66
+2024-12-20 10:18:05 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-20 10:18:05 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
