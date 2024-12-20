@@ -15,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+
 /**
  * 로그 파일을 파싱하고 분석하는 기능을 제공하는 클래스입니다.
  * 다양한 필터링 옵션과 검색 기능을 지원합니다.
@@ -35,26 +37,16 @@ import org.springframework.stereotype.Component;
 public class LogParser {
     /** 파싱할 로그 파일의 경로 */
     private final String logPath;
-    
-    /** 로그 레벨의 우선순위를 정의하는 열거형 */
+    private final String logDirectory;
+
+    /** 로그 레벨의 우선순위를 정의하는 거형 */
     public enum LogLevel {
-        DEBUG(0),                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-        INFO(1),
-        WARN(2),
-        ERROR(3);
-
+        DEBUG(0), INFO(1), WARN(2), ERROR(3);
+        
         private final int priority;
-
-        LogLevel(int priority) {
-            this.priority = priority;
-        }
-
-        public int getPriority() {
-            return priority;
-        }
+        LogLevel(int priority) { this.priority = priority; }
+        public int getPriority() { return priority; }
     }
-
-    private static final Pattern LOG_PATTERN = Pattern.compile("\\[(ERROR|WARN|INFO|DEBUG)\\]");
 
     /**
      * LogParser 객체를 생성합니다.
@@ -67,7 +59,7 @@ public class LogParser {
             throw new IllegalArgumentException("로그 파일 경로는 null일 수 없습니다");
         }
         this.logPath = logPath;
-        log.info("LogParser initialized with path: {}", logPath);
+        this.logDirectory = new File(logPath).getParent();
     }
 
     /**
@@ -144,7 +136,7 @@ public class LogParser {
                      start.format(formatter), 
                      end.format(formatter));
         } catch (IOException e) {
-            log.error("시간 범위 로그 필터링 중 오류 발생: {}", e.getMessage());
+            log.error("간 범위 로그 필터링 중 오류 발생: {}", e.getMessage());
         }
         return filteredLogs;
     }
@@ -189,42 +181,49 @@ public class LogParser {
     }
 
     public List<String> filterLogsByLevel(String level) {
-        List<String> filteredLogs = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.contains(" " + level + " ")) {
-                    filteredLogs.add(line);
-                }
-            }
-            log.debug("Found {} logs with level {}", filteredLogs.size(), level);
-        } catch (IOException e) {
-            log.error("로그 필터링 중 오류 발생: {}", e.getMessage());
-        }
-        return filteredLogs;
+        return readLogFile(line -> 
+            line.contains("[" + level + "]") || line.contains(" " + level + " "));
     }
 
     public Map<String, Integer> getLogSummary() {
         Map<String, Integer> summary = new HashMap<>();
-        summary.put("ERROR", 0);
-        summary.put("WARN", 0);
-        summary.put("INFO", 0);
-        summary.put("DEBUG", 0);
+        for (LogLevel level : LogLevel.values()) {
+            summary.put(level.name(), 0);
+        }
 
+        readLogFile(line -> {
+            for (String level : summary.keySet()) {
+                if (line.contains(" " + level + " ")) {
+                    summary.put(level, summary.get(level) + 1);
+                    break;
+                }
+            }
+            return false;
+        });
+
+        return summary;
+    }
+
+    // 로그 파일 읽기 유틸리티 메소드
+    private List<String> readLogFile(LogLineProcessor processor) {
+        List<String> results = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                for (String level : summary.keySet()) {
-                    if (line.contains(" " + level + " ")) {
-                        summary.put(level, summary.get(level) + 1);
-                        break;
-                    }
+                if (processor.process(line)) {
+                    results.add(line);
                 }
             }
         } catch (IOException e) {
-            log.error("로그 요약 생성 중 오류 발생: {}", e.getMessage());
+            log.error("로그 파일 읽기 오류: {}", e.getMessage());
         }
-        return summary;
+        return results;
+    }
+
+    // 함수형 인터페이스 정의
+    @FunctionalInterface
+    private interface LogLineProcessor {
+        boolean process(String line);
     }
 
     public static void main(String[] args) {

@@ -1,14 +1,33 @@
-2024-12-19 20:45:30 [main] INFO  com.samsa.NobflowApplication - Starting NobflowApplication using Java 17.0.12 with PID 531480 (/home/nhnacademy/Desktop/NobFlow/nobflow/target/classes started by nhnacademy in /home/nhnacademy/Desktop/NobFlow)
-2024-12-19 20:45:30 [main] INFO  com.samsa.NobflowApplication - No active profile set, falling back to 1 default profile: "default"
-2024-12-19 20:45:31 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
-2024-12-19 20:45:31 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
-2024-12-19 20:45:31 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-12-19 20:45:31 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
-2024-12-19 20:45:31 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-12-19 20:45:31 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 934 ms
-2024-12-19 20:45:31 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
-2024-12-19 20:45:32 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
-2024-12-19 20:45:32 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
-2024-12-19 20:45:32 [main] INFO  com.samsa.NobflowApplication - Started NobflowApplication in 2.138 seconds (process running for 2.657)
-2024-12-19 20:45:32 [main] INFO  com.samsa.NobflowApplication - NobFlow 애플리케이션이 성공적으로 시작되었습니다.
-2024-12-19 20:45:32 [main] INFO  com.samsa.NobflowApplication - 서버 주소: http://localhost:8081
+2024-12-19 23:00:19 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 497a37df-49cb-48e5-925e-0c6bbf5d7e48
+2024-12-19 23:00:19 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: fb1365f0-5d9f-4420-adbd-7aeba44e345f - 처리 시작
+2024-12-19 23:00:19 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 497a37df-49cb-48e5-925e-0c6bbf5d7e48
+2024-12-19 23:00:19 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/storage/d/24e124136d151547/n/입구/g/24e124fffef5dccc/e/lora, {"time":1734616807649,"value":{"dr":0,"rssi":-45,"snr":8.2,"channel":6,"frequency":923300000,"sf":12}}}
+2024-12-19 23:00:19 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-19 23:00:19 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: fb1365f0-5d9f-4420-adbd-7aeba44e345f - 처리 완료
+2024-12-19 23:00:19 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b44371d9-2b3a-4edc-905f-46da28c93016
+2024-12-19 23:00:19 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b44371d9-2b3a-4edc-905f-46da28c93016
+2024-12-19 23:00:19 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[080717ed-6a97-4314-a4d1-eb2c70cf49d6] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/storage/d/24e124136d151547/n/입구/g/24e124fffef5dccc/e/lora, {"time":1734616807649,"value":{"dr":0,"rssi":-45,"snr":8.2,"channel":6,"frequency":923300000,"sf":12}}}
+2024-12-19 23:00:19 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-19 23:00:19 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-19 23:00:20 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 497a37df-49cb-48e5-925e-0c6bbf5d7e48
+2024-12-19 23:00:20 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 497a37df-49cb-48e5-925e-0c6bbf5d7e48
+2024-12-19 23:00:20 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: fd1e6171-ee83-4393-b21c-b22b1862731a - 처리 시작
+2024-12-19 23:00:20 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/e/co2, {"time":1734616809808,"value":878}}
+2024-12-19 23:00:20 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: fd1e6171-ee83-4393-b21c-b22b1862731a - 처리 완료
+2024-12-19 23:00:20 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-19 23:00:20 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b44371d9-2b3a-4edc-905f-46da28c93016
+2024-12-19 23:00:20 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b44371d9-2b3a-4edc-905f-46da28c93016
+2024-12-19 23:00:20 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-19 23:00:20 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[080717ed-6a97-4314-a4d1-eb2c70cf49d6] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/e/co2, {"time":1734616809808,"value":878}}
+2024-12-19 23:00:20 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-19 23:00:21 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: 497a37df-49cb-48e5-925e-0c6bbf5d7e48
+2024-12-19 23:00:21 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 2fece75c-560f-4de0-9a9d-ce1fbe59533a - 처리 시작
+2024-12-19 23:00:21 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 기본 메시지 핸들러: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/e/pressure, {"time":1734616809808,"value":1025.1}}
+2024-12-19 23:00:21 [Thread-6] INFO  com.samsa.node.inout.FunctionNode - 메시지 ID: 2fece75c-560f-4de0-9a9d-ce1fbe59533a - 처리 완료
+2024-12-19 23:00:21 [Thread-5] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: 497a37df-49cb-48e5-925e-0c6bbf5d7e48
+2024-12-19 23:00:21 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 완료. NodeId: b44371d9-2b3a-4edc-905f-46da28c93016
+2024-12-19 23:00:21 [Thread-6] INFO  com.samsa.core.node.InOutNode - 노드 실행 시작. NodeId: b44371d9-2b3a-4edc-905f-46da28c93016
+2024-12-19 23:00:21 [Thread-5] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-19 23:00:21 [Thread-6] INFO  com.samsa.core.port.InPort - 메세지 생김
+2024-12-19 23:00:21 [Thread-7] INFO  com.samsa.node.in.DebugNode - Node[080717ed-6a97-4314-a4d1-eb2c70cf49d6] - Payload: {topic: data/s/nhnacademy/b/gyeongnam_campus/p/class_a/d/24e124126d152969/n/왼쪽 뒤/e/pressure, {"time":1734616809808,"value":1025.1}}
+2024-12-19 23:00:21 [Thread-7] INFO  com.samsa.core.port.InPort - 메세지 생김

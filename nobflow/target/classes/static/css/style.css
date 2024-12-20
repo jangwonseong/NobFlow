@@ -232,3 +232,74 @@ input[type="text"]:focus {
 .log-section {
     animation: fadeIn 0.3s ease-in-out;
 }
+
+/* 분석 결과 스타일 */
+.analysis-results {
+    background-color: var(--background-light);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box {
+    background: white;
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm) 0;
+    border-radius: var(--border-radius-sm);
+    border-left: 4px solid var(--primary-color);
+}
+
+.stat-box h4 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* 로그 레벨 색상 */
+.log-INFO { color: var(--success-color); }
+.log-DEBUG { color: var(--primary-color); }
+.log-WARN { color: var(--warning-color); }
+.log-ERROR { color: var(--error-color); }
+
+/* 로그 컨트롤 섹션 스타일 */
+.log-control-section {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md);
+    background: white;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-section {
+    margin-bottom: var(--spacing-md);
+}
+
+.search-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+}
+
+.log-filters {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+}
+
+.filter-checkbox input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* 로그 레벨별 색상 */
+.log-INFO { color: var(--success-color); }
+.log-DEBUG { color: var(--primary-color); }
+.log-WARN { color: var(--warning-color); }
+.log-ERROR { color: var(--error-color); }
