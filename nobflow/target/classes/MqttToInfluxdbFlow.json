@@ -1,0 +1,52 @@
+{
+    "nodes": [
+        {
+            "id": "MqttInNode_1",
+            "type": "MqttInNode",
+            "properties": {
+                "broker": "tcp://192.168.70.203:1883",
+                "clientId": "mqttToInfluxdb",
+                "topics": [
+                    "data/#"
+                ]
+            }
+        },
+        {
+            "id": "FunctionNode_1",
+            "type": "FunctionNode",
+            "properties": {
+                "className": "MqttToInfluxdb",
+                "code": "try {\n    String rawPayload = message.getPayload().toString();\n    String payload = rawPayload.substring(1, rawPayload.length() - 1);\n    String topic = payload.split(\",\", 2)[0];\n    String jsonPart = payload.split(\",\", 2)[1].trim();\n    if (topic.contains(\"lora\") || topic.contains(\"power_meter\")) {\n        return;\n    }\n    String[] topicParts = topic.split(\"/\");\n    String spot = topicParts[10];\n    String measureType = topicParts[topicParts.length - 1];\n    String place = topicParts[6];\n    String timeStr = jsonPart.split(\"\\\\{\")[1].split(\",\")[0].split(\":\")[1];\n    String valueStr = jsonPart.split(\"value\\\":\")[1].split(\"}\")[0];\n    double value = Double.parseDouble(valueStr);\n    Map<String, Object> newPayload = new HashMap<>();\n    Map<String, String> tags = new HashMap<>();\n    Map<String, Object> fields = new HashMap<>();\n    tags.put(\"place\", place);\n    tags.put(\"spot\", spot);\n    fields.put(measureType, value);\n    newPayload.put(\"measurement\", \"sensor\");\n    newPayload.put(\"tags\", tags);\n    newPayload.put(\"fields\", fields);\n    newPayload.put(\"time\", Long.parseLong(timeStr));\n    message.setPayload(newPayload);\n} catch (Exception e) {\n    log.error(\"Error processing sensor message: {}\", e.getMessage());\n}"
+            }
+        },
+        {
+            "id": "DebugNode_1",
+            "type": "DebugNode",
+            "properties": {}
+        },
+        {
+            "id": "InfluxNode_1",
+            "type": "InfluxNode",
+            "properties": {
+                "url": "http://192.168.71.213:8086",
+                "token": "G8_uOapcNgd_0pxthosV4EDTwWnHsei46raAFy8poPwwGMZI79YU7LNdBruAdOC6WqVGiYTiSV-dWb_xauKm0A==",
+                "org": "dong's company",
+                "bucket": "tetetest"
+            }
+        }
+    ],
+    "connections": [
+        {
+            "from": "MqttInNode_1",
+            "to": "FunctionNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "DebugNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "InfluxNode_1"
+        }
+    ]
+}

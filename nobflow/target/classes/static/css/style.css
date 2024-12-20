@@ -1,0 +1,305 @@
+:root {
+    /* 색상 변수 */
+    --primary-color: #2196F3;
+    --success-color: #4CAF50;
+    --warning-color: #FFC107;
+    --error-color: #F44336;
+    --background-light: #f5f5f5;
+    --background-dark: #1e1e1e;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --border-color: #ddd;
+    
+    /* 크기 변수 */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 20px;
+    --spacing-xl: 32px;
+    
+    /* 반경 변수 */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+}
+
+/* 기본 스타일 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+}
+
+/* 컨테이너 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+/* 업로드 섹션 */
+.upload-section {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--text-light);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.file-input-group {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Flow 정보 섹션 */
+.flow-info {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 로그 섹션 */
+.log-section {
+    background: var(--background-dark);
+    color: var(--text-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.log-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.log-filters {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+/* 로그 분석 섹션 스타일 추가 */
+.log-analysis {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#analyzeBtn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#analysisResult {
+    margin-top: 20px;
+}
+
+.error-log {
+    color: #F44336;
+    margin: 5px 0;
+}
+
+/* 로그 출력 영역 */
+#logOutput {
+    font-family: 'Consolas', 'Monaco', monospace;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    height: 500px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* 로그 레벨별 스타일 */
+.log-info { color: var(--success-color); }
+.log-debug { color: var(--primary-color); }
+.log-warn { color: var(--warning-color); }
+.log-error { color: var(--error-color); }
+
+/* 버튼 스타일 */
+button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    background: var(--primary-color);
+    color: var(--text-light);
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--primary-color) 85%, black);
+}
+
+button:disabled {
+    background: var(--border-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"] {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    width: 100%;
+    max-width: 300px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-sm);
+    }
+
+    .log-controls {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .log-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    input[type="text"] {
+        max-width: 100%;
+    }
+
+    .file-input-group {
+        flex-direction: column;
+    }
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.log-section {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 분석 결과 스타일 */
+.analysis-results {
+    background-color: var(--background-light);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box {
+    background: white;
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm) 0;
+    border-radius: var(--border-radius-sm);
+    border-left: 4px solid var(--primary-color);
+}
+
+.stat-box h4 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* 로그 레벨 색상 */
+.log-INFO { color: var(--success-color); }
+.log-DEBUG { color: var(--primary-color); }
+.log-WARN { color: var(--warning-color); }
+.log-ERROR { color: var(--error-color); }
+
+/* 로그 컨트롤 섹션 스타일 */
+.log-control-section {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md);
+    background: white;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-section {
+    margin-bottom: var(--spacing-md);
+}
+
+.search-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+}
+
+.log-filters {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+}
+
+.filter-checkbox input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* 로그 레벨별 색상 */
+.log-INFO { color: var(--success-color); }
+.log-DEBUG { color: var(--primary-color); }
+.log-WARN { color: var(--warning-color); }
+.log-ERROR { color: var(--error-color); }

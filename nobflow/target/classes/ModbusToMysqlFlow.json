@@ -1,0 +1,53 @@
+{
+    "nodes": [
+        {
+            "id": "MqttInNode_1",
+            "type": "MqttInNode",
+            "properties": {
+                "broker": "tcp://192.168.71.213:1883",
+                "clientId": "modbusToMysql",
+                "topics": [
+                    "inho/#"
+                ]
+            }
+        },
+        {
+            "id": "FunctionNode_1",
+            "type": "FunctionNode",
+            "properties": {
+                "className": "ModbusToMysql",
+                "code": "Map<String, Object> columnMap = new HashMap<>();\n\nString messageString = message.getPayload().toString();\nString topic = messageString.split(\",\", 2)[0].split(\":\")[1];\n\nString payload = messageString.split(\",\", 2)[1].trim().substring(1,\n        messageString.split(\",\", 2)[1].length() - 3);\nString value = payload.split(\",\")[1].split(\":\")[1];\nString timestamp = payload.split(\",\")[0].split(\":\")[1];\n\nString[] topics = topic.split(\"/\");\ncolumnMap.put(\"place\", topics[1]);\ncolumnMap.put(\"name\", topics[2]);\ncolumnMap.put(\"value\", value);\ncolumnMap.put(\"timestamp\", timestamp);\nmessage.setPayload(columnMap);"
+            }
+        },
+        {
+            "id": "DebugNode_1",
+            "type": "DebugNode",
+            "properties": {}
+        },
+        {
+            "id": "MysqlNode_1",
+            "type": "MysqlNode",
+            "properties": {
+                "driver": "com.mysql.cj.jdbc.Driver",
+                "url": "jdbc:mysql://192.168.71.213:3306/IOT",
+                "userId": "root",
+                "password": "P@ssw0rd",
+                "sql": "INSERT INTO modbus_data ("
+            }
+        }
+    ],
+    "connections": [
+        {
+            "from": "MqttInNode_1",
+            "to": "FunctionNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "DebugNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "MysqlNode_1"
+        }
+    ]
+}

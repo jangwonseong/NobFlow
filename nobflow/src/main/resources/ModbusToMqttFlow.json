@@ -1,0 +1,52 @@
+{
+    "nodes": [
+        {
+            "id": "ModbusNode_1",
+            "type": "ModbusNode",
+            "properties": {
+                "host": "192.168.70.203",
+                "port": 502,
+                "slaveId": 1,
+                "startOffset": 1,
+                "offsetInterval": 100,
+                "maxOffset": 2500,
+                "numOfRegisters": 64
+            }
+        },
+        {
+            "id": "FunctionNode_1",
+            "type": "FunctionNode",
+            "properties": {
+                "className": "ModbusToMqtt",
+                "code": "ObjectMapper objectMapper = new ObjectMapper(); long commonTimestamp = System.currentTimeMillis(); List<Map<String, Object>> payloadMapList = new ArrayList<>(); try { InputStream jsonFileStream = FlowLoader.class.getClassLoader().getResourceAsStream(\"channels.json\"); InputStream jsonFileStream2 = FlowLoader.class.getClassLoader().getResourceAsStream(\"channelInfo.json\"); if (jsonFileStream == null || jsonFileStream2 == null) { log.error(\"클래스패스에서 JSON 파일을 찾을 수 없습니다.\"); return; } List<Map<String, Object>> locationList = objectMapper.readValue(jsonFileStream, List.class); List<Map<String, Object>> valueList = objectMapper.readValue(jsonFileStream2, List.class); Map<String, Object> payload = (Map<String, Object>) message.getPayload(); int channel = (int) payload.get(\"offset\"); short[] data = (short[]) payload.get(\"data\"); String place = locationList.stream().filter(item -> (int) item.get(\"address\") == channel * 100).map(item -> (String) item.get(\"place\")).findFirst().orElse(\"\"); for (Map<String, Object> item : valueList) { int offset = (int) item.get(\"Offset\"); int scale = (int) item.get(\"Scale\"); double value = 0.0; if (\"int16\".equals(item.get(\"Type\"))) { value = (double) data[offset] / scale; } else if (\"uint16\".equals(item.get(\"Type\"))) { value = (double) ((data[offset] & 0xFFFF) / scale); } else { long highPart = ((data[offset] & 0xFFFFL) << 16); long lowPart = (data[offset + 1] & 0xFFFFL); value = (double) ((highPart | lowPart) / scale); } if (value != 0.0) { Map<String, Object> payloadMap = Map.of(\"topic\", \"inho/\" + place + \"/\" + item.get(\"Name\"), \"payload\", String.format(\"{\\\"time\\\":%d,\\\"value\\\":%.2f}\", commonTimestamp, value)); payloadMapList.add(payloadMap); } } message.setPayload(payloadMapList); } catch (IOException e) { log.error(\"설정 로드 중 오류 발생\", e); }"
+            }
+        },
+        {
+            "id": "DebugNode_1",
+            "type": "DebugNode",
+            "properties": {}
+        },
+        {
+            "id": "MqttOutNode_1",
+            "type": "MqttOutNode",
+            "properties": {
+                "broker": "tcp://192.168.71.213:1883",
+                "clientId": "modbusToMqtt"
+            }
+        }
+    ],
+    "connections": [
+        {
+            "from": "ModbusNode_1",
+            "to": "FunctionNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "DebugNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "MqttOutNode_1"
+        }
+    ]
+}

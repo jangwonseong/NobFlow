@@ -1,0 +1,52 @@
+{
+    "nodes": [
+        {
+            "id": "MqttInNode_1",
+            "type": "MqttInNode",
+            "properties": {
+                "broker": "tcp://192.168.71.213:1883",
+                "clientId": "modbusToInflux",
+                "topics": [
+                    "inho/#"
+                ]
+            }
+        },
+        {
+            "id": "FunctionNode_1",
+            "type": "FunctionNode",
+            "properties": {
+                "className": "ModbusToInflux",
+                "code": "try {\n    String rawPayload = message.getPayload().toString();\n    String[] payloadParts = rawPayload.substring(1, rawPayload.length() - 1).split(\",\", 2);\n\n    String topic = payloadParts[0];\n    String jsonPart = payloadParts[1].trim();\n\n    if (topic.contains(\"lora\") || topic.contains(\"power_meter\")) {\n        return;\n    }\n\n    String[] topicParts = topic.split(\"/\");\n    String location = topicParts[1];\n    String measureType = topicParts[2];\n\n    String timeStr = jsonPart.split(\"time\\\":\")[1].split(\",\")[0].trim();\n    String valueStr = jsonPart.split(\"value\\\":\")[1].split(\"}\")[0].trim();\n    double value = Double.parseDouble(valueStr);\n\n    Map<String, Object> newPayload = Map.of(\n        \"measurement\", \"power\",\n        \"tags\", Map.of(\"location\", location),\n        \"fields\", Map.of(measureType, value),\n        \"time\", Long.parseLong(timeStr)\n    );\n\n    message.setPayload(newPayload);\n\n} catch (Exception e) {\n    log.error(\"Error processing power message: {}\", e.getMessage());\n}"
+            }
+        },
+        {
+            "id": "DebugNode_1",
+            "type": "DebugNode",
+            "properties": {}
+        },
+        {
+            "id": "InfluxNode_1",
+            "type": "InfluxNode",
+            "properties": {
+                "url": "http://192.168.71.213:8086",
+                "token": "G8_uOapcNgd_0pxthosV4EDTwWnHsei46raAFy8poPwwGMZI79YU7LNdBruAdOC6WqVGiYTiSV-dWb_xauKm0A==",
+                "org": "dong's company",
+                "bucket": "tetetest"
+            }
+        }
+    ],
+    "connections": [
+        {
+            "from": "MqttInNode_1",
+            "to": "FunctionNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "DebugNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "InfluxNode_1"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "nodes": [
+        {
+            "id": "MqttInNode_1",
+            "type": "MqttInNode",
+            "properties": {
+                "broker": "tcp://192.168.70.203:1883",
+                "clientId": "mqttToMysql",
+                "topics": [
+                    "data/#"
+                ]
+            }
+        },
+        {
+            "id": "FunctionNode_1",
+            "type": "FunctionNode",
+            "properties": {
+                "className": "MqttToMysql",
+                "code": "{\n    Map<String, Object> columnMap = new HashMap<>();\n\n    String messageString = message.getPayload().toString();\n    String topic = messageString.split(\",\", 2)[0].split(\":\")[1];\n\n    if (topic.contains(\"lora\") || topic.contains(\"power_meter\")) {\n        return;\n    }\n\n    String payload = messageString.split(\",\", 2)[1].trim().substring(1,\n            messageString.split(\",\", 2)[1].length() - 3);\n    String value = payload.split(\",\")[1].split(\":\")[1];\n    String timestamp = payload.split(\",\")[0].split(\":\")[1];\n\n    String[] topics = topic.split(\"/\");\n    columnMap.put(\"place\", topics[6]);\n    columnMap.put(\"spot\", topics[10]);\n    if (topics.length > 13) {\n        columnMap.put(\"name\", topics[14]);\n    } else {\n        columnMap.put(\"name\", topics[12]);\n    }\n    columnMap.put(\"value\", Double.parseDouble(value));\n    columnMap.put(\"timestamp\", timestamp);\n\n    message.setPayload(columnMap);\n}"
+            }
+        },
+        {
+            "id": "DebugNode_1",
+            "type": "DebugNode",
+            "properties": {}
+        },
+        {
+            "id": "MysqlNode_1",
+            "type": "MysqlNode",
+            "properties": {
+                "driver": "com.mysql.cj.jdbc.Driver",
+                "url": "jdbc:mysql://192.168.71.213:3306/IOT",
+                "userId": "root",
+                "password": "P@ssw0rd",
+                "sql": "INSERT INTO mqtt_data ("
+            }
+        }
+    ],
+    "connections": [
+        {
+            "from": "MqttInNode_1",
+            "to": "FunctionNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "DebugNode_1"
+        },
+        {
+            "from": "FunctionNode_1",
+            "to": "MysqlNode_1"
+        }
+    ]
+}
