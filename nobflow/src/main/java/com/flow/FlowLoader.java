@@ -129,7 +129,7 @@ public class FlowLoader {
                 properties.get("port").asInt(),
                 properties.get("slaveId").asInt(),
                 properties.get("startOffset").asInt(),
-                properties.get("numOfRegisters").asInt()
+                properties.get("numOfRegisters").asInt(), 0, 0
             );
 
             case DELAY -> new DelayNode(properties.get("delay").asInt());

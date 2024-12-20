@@ -39,7 +39,7 @@ public class InfluxFlowMain {
         Flow flow = new Flow();
 
         // 1. 노드 생성
-        ModbusNode modbusNode = new ModbusNode("192.168.70.203", 502, 1, 0, 1); // Modbus TCP 서버 주소와 포트
+        ModbusNode modbusNode = new ModbusNode("192.168.70.203", 502, 1, 0, 1, 0, 0); // Modbus TCP 서버 주소와 포트
         DelayNode delayNode = new DelayNode(10000); // 10초 지연
         InfluxNode influxNode = new InfluxNode("http://192.168.71.221:8086", "7BuWmxpqHzyY7dN6jZiysF8SvdXEdnccAq9Uq23Mr7uL9NGc2tkZKrIkiTmaD4QtXY7NxaJSG8hbqs_kvu1kZQ==", "seong", "nhnacademy"); // InfluxDB 설정
 

@@ -103,7 +103,7 @@ public class FlowController {
 
             try {
                 log.info("Flow 중지 시작");
-                flowPool.stop();
+                stopFlow();
                 
                 if (flowFuture != null) {
                     boolean terminated = flowFuture.cancel(true);
